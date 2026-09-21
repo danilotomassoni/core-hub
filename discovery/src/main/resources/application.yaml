@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: discovery
+  profiles:
+    active:
+    - dev
+
+server:
+  port: 8761
+
+logging:
+  level:
+    root: error

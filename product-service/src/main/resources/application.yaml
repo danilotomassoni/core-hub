@@ -1,0 +1,12 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: product-service
+  profiles:
+    active:
+    - dev
+
+logging:
+  level:
+    root: error

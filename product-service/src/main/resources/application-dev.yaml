@@ -1,0 +1,52 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5434/product_db
+    username: admin
+    password: admin
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    open-in-view: false
+  mvc:
+    log-request-details: true
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(%-5level) %clr(${spring.application.name}){blue} - %clr(%msg){%-5level} %n"
+  level:
+    web: error
+    '[io.github.danilotomassoni.core_hub.product_service]': info
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: "Microsserviço de gerenciamento de produtos"
+    version: "1.0.0"
+    environment: "desenvolvimento"
+  build:
+    artifact: "@project.artifactId@"
+    version: "@project.version@"
+management:
+  info:
+    env:
+      enabled: true
+    os:
+      enabled: true
+    java:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "info, health" 
