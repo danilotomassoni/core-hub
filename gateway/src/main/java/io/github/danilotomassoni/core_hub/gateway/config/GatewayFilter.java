@@ -88,7 +88,7 @@ public class GatewayFilter implements WebFilter {
     private boolean hasRolePermission(String path, String userRole) {
         return roleProtectedPaths.entrySet().stream()
                 .filter(entry -> pathMatcher.match(entry.getKey(), path))
-                .map(Map.Entry::getValue)
+                .map(entry -> entry.getValue())
                 .findFirst()
                 .map(allowedRoles -> allowedRoles.contains(userRole))
                 .orElse(true);
